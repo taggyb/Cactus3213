@@ -1,5 +1,5 @@
 Cactus2::Application.routes.draw do
-  get "main/index"
+  root to: "main#inde"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
