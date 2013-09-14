@@ -11,5 +11,5 @@ window.Cactus2 = {
 };
 
 $(document).ready(function() {
-  Cactus2.initialize();
+	Cactus2.initialize();
 });

@@ -1,54 +1,83 @@
-<div id="wrapper" class="container">
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span4">
-        <% found = 0 %>
-        <% if this.movies.length: %>
-          <% for movie in this.movies: %>
-            <% if movie.get('id') - this.mid == 0: %>
-              <% found = 1 %>
-              <img src="<%= movie.get('img_url') %>">
-      </div>
-      <div class="span7">
-        <h3> <%= movie.get('title') %> </h3>
-        <p> Average Score: <%= movie.get('avg_score')%> </p>
-        <p> Created by: <%= movie.get('user')['name']%> </p>
-        <p> Updated at: <%= movie.get('updated_at')%> </p>
-      </div>
-    </div>
-    <h3> Reviews </h3>
-      <% if this.reviews.length: %>
-        <% for review in this.reviews: %>
-          <% if review.get('movie_id') - this.mid == 0: %>
-    <div class="hero-unit">
-      <div class="container-fluid">
-        <div class="row-fluid">
-          <div class="span4">
-            <h2> <%= review.get('user').username %> </h2>
-          </div>
-          <div class="span7">
-            <h3> <%= review.get('comment') %> </h3>
-            <p> Score: <%= review.get('score')%> Updated at: <%= review.get('updated_at')%> </p>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3">
+				<% found = 0 %>
+				<% if this.movies.length: %>
+				<% for movie in this.movies: %>
+					<% if movie.get('id') - this.mid == 0: %>
+					<% found = 1 %>
+					<img src="<%= movie.get('img_url') %>">
+			</div>
+			<div class="span9">
+				<h3><%= movie.get('title') %></h3>
+				<p>Average Score: <%= Math.round(movie.get('avg_score'))%></p>
+				<p>Created by <%= movie.get('user')['username']%> on <%= movie.get('updated_at')%></p>
+				<br />
+			</div>
+		</div>
+
+		<!-- REVIEWS | REVIEWS | REVIEWS -->
+		<div class="row-fluid"><h3 class="span12">Reviews</h3></div>
+
+		<% if this.reviews.length: %>
+			<% for review in this.reviews: %>
+			<% if review.get('movie_id') - this.mid = 0: %>
+ 
+			<div class="row-fluid"><div class="well">
+				<div class="row-fluid"><p class="span12">
+				<strong><%= review.get('user').username %></strong> reviewed on <%= review.get('updated_at') %>
+				<span class="label label-success pull-right">
+				<% if movie.get('score') > '60': %>
+					<icon class="icon-ok"></icon>
+				<% else: %>
+					<icon class="icon-remove"></icon>
+				<% end %> Score: <%= Math.round(review.get('score')) %>
+				</span>
+				</p></div>
+			
+
+				<div class="row-fluid">
+					<p class="span12"><%= review.get('comment') %></p>
+				</div>
+        		</div></div>
+      			<% end %>
+    		<% end %>
+
+
+		<!-- REVIEW FORM | REVIEW FORM | REVIEW FORM-->
+		<div class="row-fluid">
+			<form accept-charset="UTF-8" action="/movies/40/reviews" class="new_review" id="new_review" method="post">
+			<div style="margin:0;padding:0;display:inline">
+				<input name="utf8" type="hidden" value="&#x2713;" />
+				<input name="authenticity_token" type="hidden" value="UQgt1DZZEW0Y6pJRJyEDFDBrICV+seg9Bf/RnGwQz0M=" />
+			</div>
+			<div class="well">
+				<div class="row-fluid">
+					<label class="span3" for="review_score">Score (1-100)</label>
+					<input class="span3" id="review_score" name="review[score]" type="number" />
+				</div>
+				<div class="row-fluid">
+					<label class="span3" for="review_comment">Comment</label>
+		    			<textarea class="span9" cols="30" id="review_comment" name="review[comment]" rows="3"></textarea>
+				</div>
+
+				<input name="commit" type="submit" value="Create Review" />
+			</div>
+			</form>
+		</div>
+
       <% end %>
     <% end %>
-    <div class="hero-unit">
-      <textarea class="field span10" id="newreview" rows="4" placeholder="Leave a review..."/>
-      </textarea>
-      <input type="number" placeholder="Give a score from 0 to 100">
-      <p> <a class="btn btn-primary btn-large" href=""> Add review</a> </p>
-    </div>
-      <% end %>
-    <% end %>
   <% end %>
-  <% if !found: %>
-    This movie does not exist!
-  <% end %>
-  <% else: %>
-    Loading!
-  <% end %>
-  </div>
+		<% if !found: %>
+			This movie does not exist!
+		<% end %>
+	<% else: %>
+		<div class="loading-container">
+			<i class="icon-spinner icon-spin"></i>
+			<h5>Loading reviews for this movie<br /> Please wait...</h5>
+		</div>
+	<% end %>
+	</div>
 </div>

@@ -1,0 +1,8 @@
+Cactus2.Views.MoviesEdit = Backbone.View.extend({
+	template: JST['movies/editSingleMovie'],
+
+	render: function() {
+		this.$el.html(this.template());
+		return this;
+	}
+})
