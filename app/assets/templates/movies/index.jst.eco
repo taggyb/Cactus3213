@@ -1,33 +1,6 @@
 <div class="page-header row-fluid">
-  <h1>Movie List</h1>
+	<h1>Rotten Cactus Movies</h1>
 </div>
 
 <div id="movie-list">
-<% if this.movies.length: %>
-  <div class="row">
-    <% for movie in this.movies: %>
-      <div class="span3 movie">
-        <img src="<%= movie.get('img_url') %>">
-        <p></p>
-      </div>
-    <% end %>
-  </div>
-
-  <% if this.canLoadMore: %>
-    <button class="load-more-btn btn btn-primary">
-      Load more
-      <% if this.isLoading: %>
-        <i class="icon-spinner icon-spin"></i>
-      <% end %>
-    </button>
-  <% else: %>
-    <p class="no-result text-info animated flash">No more results!</p>
-  <% end %>
-
-<% else: %>
-  <div class="loading-container">
-    <i class="icon-spinner icon-spin"></i>
-    <h6>Loading...</h6>
-  </div>
-<% end %>
 </div>

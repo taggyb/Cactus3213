@@ -1,0 +1,54 @@
+<div id="wrapper" class="container">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span4">
+        <% found = 0 %>
+        <% if this.movies.length: %>
+          <% for movie in this.movies: %>
+            <% if movie.get('id') - this.mid == 0: %>
+              <% found = 1 %>
+              <img src="<%= movie.get('img_url') %>">
+      </div>
+      <div class="span7">
+        <h3> <%= movie.get('title') %> </h3>
+        <p> Average Score: <%= movie.get('avg_score')%> </p>
+        <p> Created by: <%= movie.get('user')['name']%> </p>
+        <p> Updated at: <%= movie.get('updated_at')%> </p>
+      </div>
+    </div>
+    <h3> Reviews </h3>
+      <% if this.reviews.length: %>
+        <% for review in this.reviews: %>
+          <% if review.get('movie_id') - this.mid == 0: %>
+    <div class="hero-unit">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span4">
+            <h2> <%= review.get('user').username %> </h2>
+          </div>
+          <div class="span7">
+            <h3> <%= review.get('comment') %> </h3>
+            <p> Score: <%= review.get('score')%> Updated at: <%= review.get('updated_at')%> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <% end %>
+    <% end %>
+    <div class="hero-unit">
+      <textarea class="field span10" id="newreview" rows="4" placeholder="Leave a review..."/>
+      </textarea>
+      <input type="number" placeholder="Give a score from 0 to 100">
+      <p> <a class="btn btn-primary btn-large" href=""> Add review</a> </p>
+    </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if !found: %>
+    This movie does not exist!
+  <% end %>
+  <% else: %>
+    Loading!
+  <% end %>
+  </div>
+</div>
