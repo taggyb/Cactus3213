@@ -1,7 +1,8 @@
 Cactus2::Application.routes.draw do
   root to: "main#index"
-  get '/signup' => 'main#authorize'
+  get '/signin' => 'main#authorize'
   get 'redirect' => 'main#redirect'
+  get '/signout' => 'main#signout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
