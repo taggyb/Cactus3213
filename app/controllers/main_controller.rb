@@ -10,17 +10,18 @@ class MainController < ApplicationController
   end
 
   def authorize
+  	session[:return_to] ||= request.referer
   	redirect_to client.auth_code.authorize_url(:redirect_uri => REDIRECT_URL)
   end
 
   def redirect
   	token = client.auth_code.get_token(params[:code], :redirect_uri => REDIRECT_URL)
   	session[:access_token] = token.token
-  	redirect_to '/'
+  	redirect_to session.delete(:return_to)
   end
 
   def signout
-  	session[:access_token] = nil
+  	session.delete(:access_token)
   	redirect_to '/'
   end
 
