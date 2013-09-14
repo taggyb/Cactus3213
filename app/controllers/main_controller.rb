@@ -1,6 +1,6 @@
 class MainController < ApplicationController
 	require 'oauth2'
-	enable :sessions
+	#enable :sessions
 
 	client_id = '595c342ebf0f17b5d2bafdd6cb39ce9d'
 	client_secret = 'a545b978b5964afd5b743911bafc0650'

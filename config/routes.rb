@@ -1,5 +1,6 @@
 Cactus2::Application.routes.draw do
   root to: "main#index"
+  match '/signup' => redirect("http://cs3213.herokuapp.com/users/sign_in")
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -28,7 +29,7 @@ gem 'jquery-rails'
 gem 'backbone-on-rails'
 
 gem 'twitter-bootstrap-rails'
-
+gem 'bootstrap-sass', '2.3.2.0'
 gem 'oauth2'
 
 group :production do
