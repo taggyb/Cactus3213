@@ -56,6 +56,9 @@ GEM
     execjs (2.0.1)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    gon (4.1.1)
+      actionpack (>= 2.3.0)
+      json
     hike (1.2.3)
     httpauth (0.2.0)
     i18n (0.6.5)
@@ -150,6 +153,7 @@ DEPENDENCIES
   backbone-on-rails
   bootstrap-sass (= 2.3.2.0)
   coffee-rails (~> 3.2.1)
+  gon
   jquery-rails
   oauth2
   pg

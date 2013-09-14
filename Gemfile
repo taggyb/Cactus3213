@@ -32,6 +32,8 @@ gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'oauth2'
 
+gem 'gon'
+
 group :production do
 	gem 'rails_12factor', '0.0.2'
 end
