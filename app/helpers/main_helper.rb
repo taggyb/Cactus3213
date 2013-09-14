@@ -1,6 +1,6 @@
 module MainHelper
 
-	def logged_in
+	def signed_in
 		if session[:access_token].present?
 			return true
 		else
