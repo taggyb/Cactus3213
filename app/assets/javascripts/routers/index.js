@@ -23,7 +23,6 @@ Cactus2.Routers.Index=Backbone.Router.extend({
 	},
 
 	newMovie: function() {
-		this.navigate("/new", {trigger: true});
 		var view = new Cactus2.Views.NewMovie({
 			el: '#wrapper',
 			router: this

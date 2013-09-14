@@ -3,7 +3,7 @@ Cactus2.Routers.Index=Backbone.Router.extend({
 		''			: 'index',
 		'movies'		: 'index',
 		'new'			: 'newMovie',
-		'movies/:id'		: 'displaySingleMovie',
+		'movies/:id'		: 'index',
 		'movies/:id/edit'	: 'editSingleMovie'
 	},
 

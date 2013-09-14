@@ -1,11 +1,13 @@
 <% if this.movies.length: %>
+
+<a href="/#new" id="new-movie-btn" class="menu_new">Add new movie</a>
 	<div class="row movies">
 		<% for movie in this.movies: %>
 		<div class="span3">
 			<% if movie.get('title').length > '15': %>
-				<h3 class="movie-title"><a href="#movies/<%= movie.get('id') %>"><%= movie.get('title').substring(0,14) + '...' %></a></h3>
+				<h3 class="movie-title"><a href="#movies/<%= movie.get('id') %>" class="moviedetail" data-name="<%= movie.get('id') %>"><%= movie.get('title').substring(0,14) + '...' %></a></h3>
 			<% else: %>
-				<h3 class="movie-title"><a href="#movies/<%= movie.get('id') %>"><%= movie.get('title') %></a></h3>
+				<h3 class="movie-title"><a href="#movies/<%= movie.get('id') %>" class="moviedetail" data-name="<%= movie.get('id') %>"><%= movie.get('title') %></a></h3>
 			<% end %>
  			<img src="<%= movie.get('img_url') %>">
 			<p><% if movie.get('avg_score') > '60': %>
