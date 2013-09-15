@@ -15,8 +15,36 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
 	},
 
 	events: {
-		"click .main"	: "redirectToMain"
-	},
+                "click #update_movie" : "updateMovie",
+                "click #delete_movie" : "deleteMovie"
+        },
+
+    deleteMovie: function(e) {
+                e.preventDefault();
+                if (typeof gon == 'undefined'){
+                        alert('Please login to delete this movie!'+this.id+' '+this.user);
+ 
+                        return false;
+                }
+               
+                //$(e.target).closest('form').ajax({
+                $.ajax({
+                        url: 'http://cs3213.herokuapp.com/movies/'+this.id+'.json',
+                        dataType:'json',
+                        data: {        
+                                access_token: gon.token
+                        },
+                        method: "DELETE",
+                        error: function(e){
+                                alert("You are not authorised to delete this movie");
+                        },
+                        success: function(e){
+                                alert("Movie deleted successfully."); 
+                                routerHome.navigate("", { trigger: true });
+                        },
+                });
+        },
+
 
 	redirectToMain: function() {
 		routerHome.navigate("", { trigger: true });
