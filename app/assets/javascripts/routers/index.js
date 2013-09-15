@@ -23,12 +23,11 @@ Cactus2.Routers.Index=Backbone.Router.extend({
 	},
 
 	newMovie: function() {
-		var view = new Cactus2.Views.NewMovie({
+		var newMovieView = new Cactus2.Views.NewMovie({
 			el: '#wrapper',
 			router: this
 		});
-
-		view.render();
+		newMovieView.render();
 	},
 
 	displaySingleMovie: function(id) {
