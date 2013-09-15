@@ -19,8 +19,8 @@
         </div>
  
         <div class="pagination">
-                <span id="prevPage" class="disabled">&#8592; Previous</span> .
-                <span id="nextPage" class="disabled">Next &#8594;</span>
+                <a><span id="prevPage" class="navigation disabled">&#8592; Previous</span></a>
+                <a><span id="nextPage" class="navigation disabled">Next &#8594;</span></a>
         </div>
  
 <% else: %>

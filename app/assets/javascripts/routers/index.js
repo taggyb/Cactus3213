@@ -12,6 +12,9 @@ Cactus2.Routers.Index=Backbone.Router.extend({
         },
  
         index: function(page) {
+
+                var moviePageSourceUrl = '//cs3213.herokuapp.com/movies.json?page=';
+
                 if (!page) {
                         // set default page to 1
                         page = 1;
@@ -22,9 +25,9 @@ Cactus2.Routers.Index=Backbone.Router.extend({
                         page = parseInt(page, 10);
                 }
  
-                var moviePageSourceUrl = '//cs3213.herokuapp.com/movies.json?page=';
+                
  
-                // check if there is a next page
+                // check if there is a next page?
                 var nextCollection = $.get(moviePageSourceUrl + (page + 1), function(data) {
                         // next page exists
                         if (data.length) {
@@ -38,11 +41,19 @@ Cactus2.Routers.Index=Backbone.Router.extend({
                                 $('#prevPage').addClass("enabled");
                         }
                 });
- 
+ /*
                 this.movies = new Cactus2.Collections.Movies([],{page:page});
                 this.movies.fetch();
                 this.movies.models
- 
+                */
+
+
+                this.movies = new Cactus2.Collections.Movies([],{
+                        url: moviePageSourceUrl+page
+                });
+
+                this.movies.fetch();
+                this.movies.models;
                 var view = new Cactus2.Views.MoviesIndex({
                         el:'#wrapper',
                         collection: this.movies,
@@ -65,11 +76,11 @@ Cactus2.Routers.Index=Backbone.Router.extend({
         displaySingleMovie: function(id) {
                 this.amovie = new Cactus2.Collections.aMovie([],{id:id});
                 this.amovie.fetch();
-                this.amovie.models
+                this.amovie.models;
  
                 this.reviews = new Cactus2.Collections.Reviews([],{id:id});
                 this.reviews.fetch();
-                this.reviews.models
+                this.reviews.models;
                 var view = new Cactus2.Views.SingleMovie({
                         el: '#wrapper',
                         collection: this.amovie,
@@ -77,7 +88,8 @@ Cactus2.Routers.Index=Backbone.Router.extend({
                         reviews: this.reviews,
                         router: this
                 });
- 
+                console.log(view.reviews);
+                console.log(view.collection);
                 view.render();
         },
  

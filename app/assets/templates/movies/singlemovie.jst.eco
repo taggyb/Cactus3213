@@ -2,6 +2,7 @@
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<% if this.movies.length: %>
+
 				<% for movie in this.movies: %>
 				<div class="row-fluid">
  					<a class="main">movies</a> > <%= movie.get('title') %>
@@ -29,22 +30,21 @@
 
 		<!-- REVIEWS | REVIEWS | REVIEWS -->
 		<div class="row-fluid"><h3 class="span12">Reviews</h3></div>
-
-		<% if this.reviews.length: %>
-			<% for review in this.reviews: %>
-			<% if review.get('movie_id') - this.mid = 0: %>
- 
+		<p>Before</p>
+		<% for review in this.reviews: %> 
+			<p>After</p>
+			<% if review.get('movie_id') - this.mid == 0: %>
 			<div class="row-fluid"><div class="well">
 				<div class="row-fluid"><p class="span12">
 				<strong><%= review.get('user').username %></strong> reviewed on <%= review.get('updated_at') %>
+				<a href="" class="btn btn-primary" id="delete_review" style="width: 100px">Delete</a>
 				<span class="label label-success pull-right">
 				<% if movie.get('score') > '60': %>
 					<icon class="icon-ok"></icon>
 				<% else: %>
 					<icon class="icon-remove"></icon>
 				<% end %> Score: <%= Math.round(review.get('score')) %>
-				<a href="" class="btn btn-primary" id="delete_review" style="width: 100px">Delete</a>
-
+				
 				</span>
 				</p></div>
 			
@@ -54,8 +54,8 @@
 				</div>
         		</div></div>
       			
-    			<% end %><% end %>
-		<% end %>
+    			<% end %>
+    	<% end %>
 
 
 		
