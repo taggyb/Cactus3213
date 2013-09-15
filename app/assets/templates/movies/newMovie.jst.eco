@@ -3,12 +3,7 @@
 		<h1>New Movie</h1>
 	</div>
 
-	<form accept-charset="UTF-8" action="/movies" class="form-horizontal" enctype="multipart/form-data" form_id="new_movie_form" method="POST">
-		<div style="margin:0;padding:0;display:inline">
-			<input name="utf8" type="hidden" value="&#x2713;" />
-			<input name="authenticity_token" type="hidden" value="UQgt1DZZEW0Y6pJRJyEDFDBrICV+seg9Bf/RnGwQz0M=" />
-		</div>
-
+	<form_id="new_movie_form" method="POST">
 		<div class="control-group">
 			<label class="control-label" for="movie_title">Title</label>
 			<div class="controls">
