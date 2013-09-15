@@ -1,21 +1,29 @@
 <div class="container">
 	<div class="container-fluid">
 		<div class="row-fluid">
-			<div class="span3">
-				<% found = 0 %>
-				<% if this.movies.length: %>
+			<% if this.movies.length: %>
 				<% for movie in this.movies: %>
-					<% if movie.get('id') - this.mid == 0: %>
-					<% found = 1 %>
+				<div class="row-fluid">
+ 					<a class="main">movies</a> > <%= movie.get('title') %>
+					<br/><br/>
+				</div>
+				<div class="span3">
 					<img src="<%= movie.get('img_url') %>">
-			</div>
-			<div class="span9">
-				<h3><%= movie.get('title') %></h3>
-				<p>Average Score: <%= Math.round(movie.get('avg_score'))%></p>
-				<p>Created by <%= movie.get('user')['username']%> on <%= movie.get('updated_at')%></p>
-				<br />
-			</div>
+				</div>
+				<div class="span9">
+					<h3><%= movie.get('title') %></h3>
+					<p><%= movie.get('summary') %></p>
+					<br />
+				</div>
+				<% end %>
+			<% else: %>
+				<div class="loading-container">
+					<i class="icon-spinner icon-spin"></i>
+					<h5>Loading movie<br /> Please wait...</h5>
+				</div>
+			<% end %>
 		</div>
+
 
 		<!-- REVIEWS | REVIEWS | REVIEWS -->
 		<div class="row-fluid"><h3 class="span12">Reviews</h3></div>
@@ -41,8 +49,9 @@
 					<p class="span12"><%= review.get('comment') %></p>
 				</div>
         		</div></div>
-      			<% end %>
-    		<% end %>
+      			
+    			<% end %><% end %>
+		<% end %>
 
 
 		<!-- REVIEW FORM | REVIEW FORM | REVIEW FORM-->
@@ -66,18 +75,5 @@
 			</div>
 			</form>
 		</div>
-
-      <% end %>
-    <% end %>
-  <% end %>
-		<% if !found: %>
-			This movie does not exist!
-		<% end %>
-	<% else: %>
-		<div class="loading-container">
-			<i class="icon-spinner icon-spin"></i>
-			<h5>Loading reviews for this movie<br /> Please wait...</h5>
-		</div>
-	<% end %>
 	</div>
 </div>

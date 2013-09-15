@@ -5,6 +5,6 @@ Cactus2.Collections.Reviews = Backbone.Collection.extend({
 	model: Cactus2.Models.Review,
 
 	initialize: function(models, options) {
-		this.movie_id = options.id || [];   
+		this.movie_id = options.id || [];
 	}
 });

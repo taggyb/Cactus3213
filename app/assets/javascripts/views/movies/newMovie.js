@@ -7,8 +7,8 @@ Cactus2.Views.NewMovie = Backbone.View.extend({
 	},
 
 	events: {
-		"click #save_movie" : "saveMovie",
-		"click #cancel" : "cancelMovie"
+		"click #create"	: "saveMovie",
+		"click #cancel"	: "cancelMovie"
 	},
 
 	saveMovie: function() {
@@ -33,6 +33,6 @@ Cactus2.Views.NewMovie = Backbone.View.extend({
 	},
 
 	cancelMovie: function() {
-		window.routerHome.navigate('/', {trigger: true});
+		routerHome.navigate("", { trigger: true });
 	}
 });
