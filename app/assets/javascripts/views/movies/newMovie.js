@@ -14,7 +14,7 @@ Cactus2.Views.NewMovie = Backbone.View.extend({
         saveMovie: function(e) {
                 e.preventDefault();
                 if (typeof gon == 'undefined'){
-                        alert('Please login!');
+                        alert('You are not authorised to add a movie. Please sign in.');
  
                         return false;
                 }
@@ -27,10 +27,11 @@ Cactus2.Views.NewMovie = Backbone.View.extend({
                         },
                         method: "POST",
                         error: function(e){
-                                alert("error");
+                                alert("You are not authorised to add a movie. Please sign in.");
                         },
                         success: function(e){
-                                alert("movie added."); 
+                                alert("Movie has been successfully added."); 
+                                routerHome.navigate("", { trigger: true });
                         },
                 });
         },

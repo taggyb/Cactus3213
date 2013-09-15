@@ -26,7 +26,7 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
     deleteMovie: function(e) {
                 e.preventDefault();
                 if (typeof gon == 'undefined'){
-                        alert('Please login to delete this movie!'+this.id+' '+this.user);
+                        alert('Please login to delete this movie!');
  
                         return false;
                 }
