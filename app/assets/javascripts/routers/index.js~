@@ -1,9 +1,10 @@
 Cactus2.Routers.Index=Backbone.Router.extend({
 	routes: {
 		''			: 'index',
+		'movies/:id/main'	: 'index',
 		'movies'		: 'index',
 		'new'			: 'newMovie',
-		'movies/:id'		: 'index',
+		'movies/:id'		: 'displaySingleMovie',
 		'movies/:id/edit'	: 'editSingleMovie'
 	},
 
@@ -32,13 +33,17 @@ Cactus2.Routers.Index=Backbone.Router.extend({
 	},
 
 	displaySingleMovie: function(id) {
+		this.amovie = new Cactus2.Collections.aMovie([],{id:id});
+		this.amovie.fetch();
+		this.amovie.models
+
 		this.reviews = new Cactus2.Collections.Reviews([],{id:id});
 		this.reviews.fetch();
 		this.reviews.models
-		var view = new Cactus2.Views.MoviesView({
- 			el: 'body',
-			collection: this.movies,
-			mid: id,
+		var view = new Cactus2.Views.SingleMovie({
+ 			el: '#wrapper',
+			collection: this.amovie,
+			//mid: id,
 			reviews: this.reviews,
 			router: this
 		});
