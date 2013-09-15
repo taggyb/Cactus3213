@@ -43,6 +43,8 @@
 				<% else: %>
 					<icon class="icon-remove"></icon>
 				<% end %> Score: <%= Math.round(review.get('score')) %>
+				<a href="" class="btn btn-primary" id="delete_review" style="width: 100px">Delete</a>
+
 				</span>
 				</p></div>
 			

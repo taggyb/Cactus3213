@@ -6,6 +6,7 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
 		this.id = this.options.mid;
 		this.router = this.options.router;
 		this.reviews = this.options.reviews;
+		this.reviewid = this.reviews.id;
 		this.collection.on('all', this.render, this);
 	},
 
@@ -35,7 +36,7 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
                
                 //$(e.target).closest('form').ajax({
                 $.ajax({
-                        url: 'http://cs3213.herokuapp.com/movies/'+this.id+'.json',
+                        url: 'http://cs3213.herokuapp.com/movies/'+this.id+'/reviews/'+this.reviewid+'.json',
                         dataType:'json',
                         data: {        
                                 access_token: gon.token
@@ -51,6 +52,31 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
                 });
         },
 
+deleteReview: function(e) {
+                e.preventDefault();
+                if (typeof gon == 'undefined'){
+                        alert('Please login to delete this review!');
+ 
+                        return false;
+                }
+               
+                //$(e.target).closest('form').ajax({
+                $.ajax({
+                        url: 'http://cs3213.herokuapp.com/movies/'+this.id+'.json',
+                        dataType:'json',
+                        data: {        
+                                access_token: gon.token
+                        },
+                        method: "DELETE",
+                        error: function(e){
+                                alert("You are not authorised to delete this review");
+                        },
+                        success: function(e){
+                                alert("review deleted successfully."); 
+                                routerHome.navigate("", { trigger: true });
+                        },
+                });
+        },
 
     submitReview: function(e) {
                 e.preventDefault();
