@@ -56,9 +56,9 @@
 		<% end %>
 
 
-		<!-- REVIEW FORM | REVIEW FORM | REVIEW FORM-->
+		
 		<div class="row-fluid">
-			<form accept-charset="UTF-8" action="/movies/40/reviews" class="new_review" id="new_review" method="post">
+			<form class="new-review" id="#new-review" method="POST">
 			<div style="margin:0;padding:0;display:inline">
 				<input name="utf8" type="hidden" value="&#x2713;" />
 				<input name="authenticity_token" type="hidden" value="UQgt1DZZEW0Y6pJRJyEDFDBrICV+seg9Bf/RnGwQz0M=" />
@@ -73,7 +73,7 @@
 		    			<textarea class="span9" cols="30" id="review_comment" name="review[comment]" rows="3"></textarea>
 				</div>
 
-				<input name="commit" type="submit" value="Create Review" />
+				<a class="btn btn-primary" id="submit_review">Submit Review</a>
 			</div>
 			</form>
 		</div>

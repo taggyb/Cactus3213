@@ -16,7 +16,9 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
 
 	events: {
                 "click #update_movie" : "updateMovie",
-                "click #delete_movie" : "deleteMovie"
+                "click #delete_movie" : "deleteMovie",
+                "click #submit_review" : "submitReview",
+                "click #delete_review" : "deleteReview"
         },
 
     updateMovie: function() {
@@ -44,6 +46,32 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
                         },
                         success: function(e){
                                 alert("Movie deleted successfully."); 
+                                routerHome.navigate("", { trigger: true });
+                        },
+                });
+        },
+
+
+    submitReview: function(e) {
+                e.preventDefault();
+                if (typeof gon == 'undefined'){
+                        alert('You are not authorised to add a review. Please sign in.');
+ 
+                        return false;
+                }
+               
+                $(e.target).closest('form').ajaxSubmit({
+                        url: 'http://cs3213.herokuapp.com/movies/'+this.id+'/reviews.json',
+                        dataType:'json',
+                        data: {        
+                                access_token: gon.token
+                        },
+                        method: "POST",
+                        error: function(e){
+                                alert("You are not authorised to add a review Please sign in.");
+                        },
+                        success: function(e){
+                                alert("Review has been successfully added."); 
                                 routerHome.navigate("", { trigger: true });
                         },
                 });
