@@ -3,7 +3,7 @@ Cactus2::Application.routes.draw do
   get '/signin' => 'main#authorize'
   get 'redirect' => 'main#redirect'
   get '/signout' => 'main#signout'
-
+  get '/#movies' => 'http://localhost:3000/#movies/01'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
