@@ -19,6 +19,10 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
                 "click #delete_movie" : "deleteMovie"
         },
 
+    updateMovie: function() {
+                routerHome.navigate("/movies/"+this.id+"/edit", { trigger: true });
+    },
+
     deleteMovie: function(e) {
                 e.preventDefault();
                 if (typeof gon == 'undefined'){

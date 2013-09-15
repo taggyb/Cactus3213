@@ -82,8 +82,10 @@ Cactus2.Routers.Index=Backbone.Router.extend({
         },
  
         editSingleMovie: function(id) {
-                var view = new Cactus2.Views.EditMovie({
+                var view = new Cactus2.Views.EditSingleMovie({
                         el: '#wrapper',
+                        mid: id,
+                        reviews: this.reviews,
                         router: this
                 });
  
