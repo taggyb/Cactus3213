@@ -18,6 +18,7 @@ class MainController < ApplicationController
   	token = client.auth_code.get_token(params[:code], :redirect_uri => REDIRECT_URL)
   	session[:access_token] = token.token
     gon.token = session[:access_token]
+    puts "access_token: " + session[:access_token]
   	redirect_to session.delete(:return_to)
   end
 

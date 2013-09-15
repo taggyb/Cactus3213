@@ -3,7 +3,7 @@ Cactus2.Views.NewMovie = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html(this.template());
- 		//return.this;
+ 		return this;
 	},
 
 	events: {
@@ -12,24 +12,27 @@ Cactus2.Views.NewMovie = Backbone.View.extend({
 	},
 
 	saveMovie: function() {
-		if (typeof gon.token == 'undefined'){
+		if (typeof gon == 'undefined'){
 			alert('Please login!');
+			console.log(gon.token);
 		} 
-
-		else {
-			this.movie = new Cactus2.Models.Movie();
-			this.movie.set({
-				url: "http://cs3213.herokuapp.com/movies.json", 
-				title: document.getElementById("movie_title"),
-				summary: document.getElementById("movie_summary"),
-				img: document.getElementById("movie_img"),
-				data: {access_token: gon.token}
-			});
-
-			this.movie.save();
+		
+		$('#new_movie_form').ajaxSubmit({
+				url: 'http://cs3213.herokuapp.com/movies.json',
+				dataType: 'json',
+				method: 'POST',
+				data: {
+					'access_token': gon.token
+					},
+				success: function(){
+					alert('Movie added!');
+				},
+				error: function(){
+					alert('movie not added!');
+				}
+		});
 			
-			window.routerHome.navigate('/', {trigger: true});
-			}
+		window.routerHome.navigate('/', {trigger: true});
 	},
 
 	cancelMovie: function() {
