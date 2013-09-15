@@ -19,7 +19,7 @@ class MainController < ApplicationController
   	session[:access_token] = token.token
     gon.token = session[:access_token]
     puts "access_token: " + session[:access_token]
-  	redirect_to session.delete(:return_to)
+  	redirect_to '/'
   end
 
   def signout
