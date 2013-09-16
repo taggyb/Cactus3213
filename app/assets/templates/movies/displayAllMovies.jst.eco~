@@ -17,7 +17,12 @@
                 </div>
                 <% end %>
         </div>
-
+ 
+        <div class="pagination">
+                <a><span id="prevPage" class="navigation disabled">&#8592; Previous</span></a>
+                <a><span id="nextPage" class="navigation disabled">Next &#8594;</span></a>
+        </div>
+ 
 <% else: %>
         <div class="loading-container">
                 <i class="icon-spinner icon-spin"></i>

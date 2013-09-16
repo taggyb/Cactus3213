@@ -17,7 +17,7 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
 	},
 
 	events: {
-		"click .main"		: "backToIndex",
+		//"click .main"		: "backToIndex",
                 "click #update_movie"	: "updateMovie",
                 "click #delete_movie"	: "deleteMovie",
                 "click #submit_review"	: "submitReview",
