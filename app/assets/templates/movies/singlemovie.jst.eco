@@ -30,12 +30,10 @@
 
 		<!-- REVIEWS | REVIEWS | REVIEWS -->
 		<div class="row-fluid"><h3 class="span12">Reviews</h3></div>
-		<p>Before</p>
-		<% for review in this.reviews: %> 
-			<p>After</p>
+		<% for review in this.reviews: %>
 			<% if review.get('movie_id') - this.mid == 0: %>
-			<div class="row-fluid"><div class="well">
-				<div class="row-fluid"><p class="span12">
+			<div  class="row-fluid"><div class="well">
+				<div class="row-fluid"><p id="<%= review.get('id')%>" class="span12">
 				<strong><%= review.get('user').username %></strong> reviewed on <%= review.get('updated_at') %>
 				<a href="" class="btn btn-primary" id="delete_review" style="width: 100px">Delete</a>
 				<span class="label label-success pull-right">

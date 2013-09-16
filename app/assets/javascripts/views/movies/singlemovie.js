@@ -8,9 +8,11 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
 		this.reviews = this.options.reviews;
 		this.reviewid = this.reviews.id;
 		this.collection.on('all', this.render, this);
+        this.reviews.on('reset', this.render, this);
 	},
 
 	render: function() {
+        console.log(this.reviews);
 		this.$el.html(this.template({movies: this.collection.models, mid: this.id, reviews: this.reviews.models}));
 		return this;
 	},
@@ -62,7 +64,7 @@ deleteReview: function(e) {
                 //$(e.target).closest('form').ajax({
                 $.ajax({
                         
-                        url: 'http://cs3213.herokuapp.com/movies/'+this.id+'/reviews/'+this.reviewid+'.json',
+                        url: 'http://cs3213.herokuapp.com/movies/'+this.id+'/reviews/'+$(e.target).parent().attr('id')+'.json',
                         dataType:'json',
                         data: {        
                                 access_token: gon.token

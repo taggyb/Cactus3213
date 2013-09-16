@@ -79,7 +79,8 @@ Cactus2.Routers.Index=Backbone.Router.extend({
                 this.amovie.models;
  
                 this.reviews = new Cactus2.Collections.Reviews([],{id:id});
-                this.reviews.fetch();
+                this.reviews.fetch({reset: true});
+                
                 this.reviews.models;
                 var view = new Cactus2.Views.SingleMovie({
                         el: '#wrapper',
@@ -88,8 +89,6 @@ Cactus2.Routers.Index=Backbone.Router.extend({
                         reviews: this.reviews,
                         router: this
                 });
-                console.log(view.reviews);
-                console.log(view.collection);
                 view.render();
         },
  

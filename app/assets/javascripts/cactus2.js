@@ -6,7 +6,7 @@ window.Cactus2 = {
 
 	initialize: function() {
 		window.routerHome = new Cactus2.Routers.Index();
-		Backbone.history.start({pushState: true});
+		Backbone.history.start();
 	}
 };
 
