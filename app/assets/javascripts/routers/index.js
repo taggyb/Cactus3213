@@ -30,7 +30,6 @@ Cactus2.Routers.Index=Backbone.Router.extend({
                         mpage: page,
                         router: this
                 });
- 
                 view.render();
         },
  
@@ -62,14 +61,18 @@ Cactus2.Routers.Index=Backbone.Router.extend({
                 view.render();
         },
  
-        editSingleMovie: function(id) {
-                var view = new Cactus2.Views.EditSingleMovie({
-                        el: '#wrapper',
-                        mid: id,
-                        reviews: this.reviews,
-                        router: this
+        editSingleMovie: function(movieId) {
+                var movie = new Cactus2.Models.Movie({id: movieId});
+                alert("In index.js, id is " + movieId);
+                movie.fetch({
+                    success: function() {
+                        //alert("testing "+movie.title);
+                        var editMovieView = new Cactus2.Views.EditSingleMovie({
+                            model: movie,
+                            el: $('#wrapper')
+                        });
+                        editMovieView.render();
+                    }
                 });
- 
-                view.render();
         }
 });

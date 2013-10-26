@@ -7,6 +7,8 @@ Cactus2.Models.Movie=Backbone.Model.extend({
 		updated_at: null,
 		img_url: null,
 		user: null,
-		url: "",
-	}
+	},
+	url: function() {
+        return 'http://cs3213.herokuapp.com/movies/'+this.id+'.json';
+    }
 })

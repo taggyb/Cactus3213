@@ -3,7 +3,9 @@ class MainController < ApplicationController
 
 	CLIENT_ID = '595c342ebf0f17b5d2bafdd6cb39ce9d'
 	CLIENT_SECRET = 'a545b978b5964afd5b743911bafc0650'
-	REDIRECT_URL = 'http://rottencactus.herokuapp.com/redirect'
+	#REDIRECT_URL = 'http://rottencactus.herokuapp.com/redirect'
+  REDIRECT_URL = 'http://localhost:3000/redirect'
+  #this is for testing purpose
 
   def client
   	OAuth2::Client.new(CLIENT_ID, CLIENT_SECRET, :site => 'https://cs3213.herokuapp.com', :authorize_url => '/oauth/new')

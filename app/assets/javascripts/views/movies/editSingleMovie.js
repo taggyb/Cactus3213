@@ -1,19 +1,31 @@
 Cactus2.Views.EditSingleMovie = Backbone.View.extend({
 	template: JST['movies/editSingleMovie'],
 
-	render: function() {
-		this.$el.html(this.template());
-		return this;
-	},
+
+    render: function() {
+        console.log("hahaha");
+        console.log(this.model.toJSON());
+        console.log("hehehe");
+        this.$el.html(this.template(this.model.toJSON()));
+        console.log("lololo");
+        //this.$el.html(this.template());
+        this.delegateEvents();
+        return this;
+    },
 
     initialize: function() {
-		this.collection = this.options.collection;
-		this.id = this.options.mid;
-		this.router = this.options.router;
-		this.reviews = this.options.reviews;
-	},
+        _.bindAll(this,"render");
+        //alert("id is"+this.options.mid);
+        console.log(this.model);
+        this.collection = this.options.collection;
+        this.id = this.options.mid;
+        this.router = this.options.router;
+        this.reviews = this.options.reviews;
+    },
 
-	events: {
+
+
+	events:{
                 "click #update" : "updateMovie",
                 "click #cancel" : "cancelMovie"
     },
@@ -24,7 +36,7 @@ Cactus2.Views.EditSingleMovie = Backbone.View.extend({
                         alert('Please login to update this movie!');
                         return false;
                 }
-               
+
                 $(e.target).closest('form').ajaxSubmit({
                         url: 'http://cs3213.herokuapp.com/movies/'+this.id+'.json',
                         dataType:'json',
@@ -39,10 +51,14 @@ Cactus2.Views.EditSingleMovie = Backbone.View.extend({
                                 alert("Update successful."); 
                                 routerHome.navigate("", { trigger: true });
                         },
+                        beforeSubmit: function(e) {
+                            if ($('#movie_img').val() == "") {
+                                $('#movie_img').remove();
+                            }
+                        }
                 });
-        },
- 
-        cancelMovie: function() {
-                routerHome.navigate("", { trigger: true });
-        }
+            },
+    cancelMovie: function() {
+        routerHome.navigate("", { trigger: true });
+    }
 })

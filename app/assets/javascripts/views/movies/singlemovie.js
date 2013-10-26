@@ -13,7 +13,8 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html(this.template({movies: this.collection.models, mid: this.id, reviews: this.reviews.models}));
-		return this;
+		this.delegateEvents();
+                return this;
 	},
 
 	events: {
@@ -26,6 +27,7 @@ Cactus2.Views.SingleMovie = Backbone.View.extend({
 
 	updateMovie: function() {
 		routerHome.navigate("/movies/"+this.id+"/edit", { trigger: true });
+                return false;
 	},
 
 	deleteMovie: function(e) {
