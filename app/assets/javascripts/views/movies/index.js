@@ -1,4 +1,4 @@
-Cactus2.Views.MoviesIndex = Backbone.View.extend({
+Cactus2.Views.MoviesIndex = Cactus.View.extend({
 	template: JST['movies/index'],
 		
 	initialize: function() {

@@ -1,4 +1,4 @@
-Cactus2.Views.NewMovie = Backbone.View.extend({
+Cactus2.Views.NewMovie = Cactus.View.extend({
         template: JST["movies/newMovie"],
  
         render: function() {

@@ -14,7 +14,7 @@
 //= require jquery.form.js
 //= require twitter/bootstrap
 //= require underscore
-//= require backbone
+//= require cactus
 //= require cactus2
 //= require_tree ../templates
 //= require_tree ./models

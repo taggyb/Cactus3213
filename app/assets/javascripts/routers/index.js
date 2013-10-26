@@ -1,4 +1,4 @@
-Cactus2.Routers.Index=Backbone.Router.extend({
+Cactus2.Routers.Index=Cactus.Router.extend({
         routes: {
                 ''                      : 'index',
                 'movies'                : 'index',
