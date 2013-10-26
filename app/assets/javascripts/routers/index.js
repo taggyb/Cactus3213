@@ -63,7 +63,7 @@ Cactus2.Routers.Index=Backbone.Router.extend({
  
         editSingleMovie: function(movieId) {
                 var movie = new Cactus2.Models.Movie({id: movieId});
-                alert("In index.js, id is " + movieId);
+                //alert("In index.js, id is " + movieId);
                 movie.fetch({
                     success: function() {
                         //alert("testing "+movie.title);
