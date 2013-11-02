@@ -8,7 +8,6 @@ Cactus2.Views.EditSingleMovie = Backbone.View.extend({
         console.log("hehehe");
         this.$el.html(this.template(this.model.toJSON()));
         console.log("lololo");
-        //this.$el.html(this.template());
         this.delegateEvents();
         return this;
     },
@@ -36,9 +35,10 @@ Cactus2.Views.EditSingleMovie = Backbone.View.extend({
                         alert('Please login to update this movie!');
                         return false;
                 }
-
+                var movie_id = this.model.get('id');
+                console.log("in update movie");
                 $(e.target).closest('form').ajaxSubmit({
-                        url: 'http://cs3213.herokuapp.com/movies/'+this.id+'.json',
+                        url: 'http://cs3213.herokuapp.com/movies/'+movie_id+'.json',
                         dataType:'json',
                         data: {        
                                 access_token: gon.token
