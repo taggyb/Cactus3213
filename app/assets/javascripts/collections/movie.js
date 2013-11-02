@@ -1,4 +1,4 @@
-Cactus2.Collections.aMovie=Cactus.Collection.extend({
+Cactus2.Collections.aMovie=Backbone.Collection.extend({
 	url: function() {
 		return 'http://cs3213.herokuapp.com/movies/' + this.movie_id + '.json';
 	},

@@ -1,4 +1,4 @@
-Cactus2.Models.Movie=Cactus.Model.extend({
+Cactus2.Models.Movie=Backbone.Model.extend({
 	defaults:{
 		avg_score: null,
 		id: null,

@@ -1,4 +1,4 @@
-Cactus2.Models.Review=Cactus.Model.extend({
+Cactus2.Models.Review=Backbone.Model.extend({
 	defaults:{
 		comment: null,
 		id: null,

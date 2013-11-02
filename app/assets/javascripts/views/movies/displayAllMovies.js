@@ -1,4 +1,4 @@
-Cactus2.Views.MovieList = Cactus.View.extend({
+Cactus2.Views.MovieList = Backbone.View.extend({
         template: JST['movies/displayAllMovies'],
  
         events: {
